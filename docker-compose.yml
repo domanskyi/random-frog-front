@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  random-frog-api:
+    container_name: random-frog-api
+    build:
+      context: ../random-frog-api
+    ports:
+      - 8080:8080
+
+  random-frog-front:
+    container_name: random-frog-front
+    depends_on:
+      - random-frog-api
+    build:
+      context: .
+    ports:
+      - 80:80
