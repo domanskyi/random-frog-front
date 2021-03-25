@@ -5,6 +5,11 @@ import { useFrog } from "./api";
 function App() {
   const { data, loading } = useFrog();
 
+  console.log({
+    data,
+    loading,
+  });
+
   return (
     <div className="App">
       <header className="App-header">

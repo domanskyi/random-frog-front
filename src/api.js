@@ -8,6 +8,8 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 export const useFrog = () => {
   const { data, error } = useSWR(API_URL, fetcher);
 
+  console.log("FETCHING FROG FROM", API_URL);
+
   return {
     data,
     error,
