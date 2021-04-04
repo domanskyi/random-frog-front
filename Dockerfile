@@ -1,4 +1,4 @@
-FROM node:14 as build-stage
+FROM node:14-alpine as build-stage
 
 WORKDIR /usr/src/random-frog-front
 
@@ -8,7 +8,6 @@ RUN npm ci --only=production
 
 RUN npm run build
 
-FROM nginx:1.15
+FROM nginx:1.19.9-alpine
 
 COPY --from=build-stage /usr/src/random-frog-front/build /usr/share/nginx/html
-COPY --from=build-stage /usr/src/random-frog-front/nginx.conf /etc/nginx/conf.d/default.conf 
